@@ -5,7 +5,6 @@ using namespace XmlRpc;
 using namespace transmission_interface;
 
 Transmission_Config_Parser::Transmission_Config_Parser()
-    : transmission_loader_("transmission_interface", "transmission_interface::Transmission")
 {
 }
 
@@ -29,11 +28,22 @@ void Transmission_Config_Parser::parseConfig(XmlRpc::XmlRpcValue &config, Transm
     for (auto it = transmissions_config.begin(); it != transmissions_config.end(); ++it)
     {
         std::string name = it->first;
-        std::string type = it->second["type"];
+        std::string class_name = it->second["type"];
 
-        // FIX ME
-        std::shared_ptr<transmission_interface::Transmission> transmission = 
-            std::make_shared<transmission_interface::SimpleTransmission>(1.0);
+        std::shared_ptr<transmission_interface::Transmission> transmission;
+
+        if (class_name == "transmission_interface::SimpleTransmission")
+        {
+            transmission = std::make_shared<transmission_interface::SimpleTransmission>(1.0);
+        }
+        else
+        {
+            std::string package_name = it->second["package"];
+            auto plugin_loader = plugin_map_.fetchPluginLoader(package_name, "Transmission_Loader_Plugin");
+            std::shared_ptr<Transmission_Loader_Plugin> transmission_loader(
+                    plugin_loader->createUnmanagedInstance(class_name));
+            transmission = transmission_loader->loadTransmission(it->second);
+        }
 
         Transmission_Properties_Ptr transmission_properties;
         transmission_properties = std::make_shared<Transmission_Properties>(name, transmission);
