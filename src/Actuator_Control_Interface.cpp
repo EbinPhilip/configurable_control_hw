@@ -27,24 +27,24 @@ Actuator_Control_Interface::~Actuator_Control_Interface()
 
 void Actuator_Control_Interface::readState()
 {
-    if (stop_flag_)
-    {
-        return;
-    }
     for (auto &it : *controller_map_)
     {
+        if (stop_flag_)
+        {
+            return;
+        }
         it.second->readState();
     }
 }
 
 void Actuator_Control_Interface::writeCommand()
 {
-    if (stop_flag_)
-    {
-        return;
-    }
     for (auto &it : *controller_map_)
     {
+        if (stop_flag_)
+        {
+            return;
+        }
         it.second->writeCommand();
     }
 }
