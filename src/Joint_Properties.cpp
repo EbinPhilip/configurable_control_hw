@@ -18,7 +18,7 @@ void Position_Joint_Properties::registerJointInterfaces(Joint_Interfaces_Accesso
 
 void Position_Joint_Properties::setDefaultVelocity()
 {
-    command.velocity = default_velocity_.Value();
+    command.velocity = default_velocity_;
 }
 
 void PosVel_Joint_Properties::registerJointInterfaces(Joint_Interfaces_Accessor& accessor)
