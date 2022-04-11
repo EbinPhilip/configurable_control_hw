@@ -35,8 +35,14 @@ void Joint_Config_Parser::parseConfig(XmlRpc::XmlRpcValue& config, Joint_Map map
             if (it->second.hasMember("default_rpm"))
             {
                 RUnits::RPM rpm = static_cast<double>(it->second["default_rpm"]);
-                joint_properties = std::make_shared<Position_Joint_Properties>(name, rpm);
+                joint_properties = std::make_shared<Position_Joint_Properties>(name,
+                    ((RUnits::Radians_Per_Sec)rpm).Value());
                 
+            }
+            else if (it->second.hasMember("default_speed"))
+            {
+                double speed = it->second["default_speed"];
+                joint_properties = std::make_shared<Position_Joint_Properties>(name, speed);
             }
             else
             {

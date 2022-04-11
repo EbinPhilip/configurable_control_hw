@@ -33,7 +33,7 @@ protected:
 
 struct Position_Joint_Properties : public Joint_Properties
 {
-    Position_Joint_Properties(const std::string &name, RUnits::Radians_Per_Sec default_velocity = 3.141593)
+    Position_Joint_Properties(const std::string &name, double default_velocity = 3.141593)
         : Joint_Properties(name),
           joint_position_(joint_state_, &command.position),
           default_velocity_(default_velocity)
@@ -46,7 +46,7 @@ struct Position_Joint_Properties : public Joint_Properties
 
 protected:
     hardware_interface::JointHandle joint_position_;
-    RUnits::Radians_Per_Sec default_velocity_;
+    double default_velocity_;
 };
 
 struct PosVel_Joint_Properties : public Joint_Properties
