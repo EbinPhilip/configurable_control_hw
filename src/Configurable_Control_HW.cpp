@@ -108,8 +108,8 @@ void Configurable_Control_HW::_handleEmergencyStop()
     {
         bool error_status;
         std::string error_description;
-        error_status = actuator_interface_->getErrorDetails(error_description);
         actuator_interface_->disableActuators();
+        error_status = actuator_interface_->getErrorDetails(error_description);
 
         ROS_WARN("Emergency stop called!");
         if (error_status)
