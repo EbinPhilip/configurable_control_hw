@@ -66,6 +66,8 @@
   <depend>xmlrpcpp</depend>
   <depend>pluginlib</depend>
   <depend>rotational_units</depend>
+  <depend>ros_control</depend>
+  <depend>ros_controllers</depend>
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>
 
