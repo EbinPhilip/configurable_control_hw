@@ -14,7 +14,7 @@ The ROS Control framework requires the user to implement a RobotHW interface for
 Complete details of the RobotHW interface and it's implementations can be found in the [ROS Control documentation](http://wiki.ros.org/ros_control). In summary, the RobotHW interface acts as intermediary between ROS Controllers and the actual actuator hardware. For a robot with a single joint and actuator, the workflow is as follows:
 
 <p align="center">
-<img src="ros-robot-hw.svg" alt="ros-robot-hw" width="" height="50"/></p>
+<img src="ros-robot-hw.svg" alt="ros-robot-hw" width="500" height=""/></p>
 
 While this is trivial for a single joint robot, for real-world robots, implementing all the functionality into a single class can become challenging. Such a class can also prove difficult to maintain. Any change to the robot configuration or to the hardware resource implementation can be difficult to implement.
 
@@ -23,7 +23,7 @@ While this is trivial for a single joint robot, for real-world robots, implement
 The Configurable Control HW framework is aimed at solving the problem mentioned above. It provides a complete implementation of the RobotHW class, but using abstract versions of the hardware rsources. This allows for decoupling the RobotHW implementation, from the robot's configuration as well as concrete implementations of different hardware resources.
 
 <p align="center">
-<img src="configurable-control-hw.svg" alt="ros-robot-hw" width="500" height="250"/></p>
+<img src="configurable-control-hw.svg" alt="ros-robot-hw" width="900" height="450"/></p>
 
 The RobotHW implementation in this framework applies the previously described workflow for RobotHW, using abstractions for joints, tranmissions and actuators. The required implementations for these resources have to be specified as runtime configuration(YAML files).
 
