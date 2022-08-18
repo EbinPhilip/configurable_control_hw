@@ -1,6 +1,6 @@
 # The Configurable Control Hardware framework
 
-A [Robot Operating System](https://www.ros.org/) (ROS) framework for managing the hardware resources of a robot: actuators, transmission and joints. This framework is meant to be used alongside the ROS Control framework.
+A [Robot Operating System](https://www.ros.org/) (ROS) framework for managing the hardware resources of a robot: actuators, transmissions and joints. This framework is meant to be used alongside the ROS Control framework.
 
 ---
 <img src="./logos/cplusplus-original.svg" alt="c++" width="50" height="50"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./logos/ros-icon.png" alt="ros" width="" height="50"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
