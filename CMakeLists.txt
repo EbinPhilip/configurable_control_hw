@@ -165,6 +165,15 @@ target_link_libraries(${PROJECT_NAME}
   ${catkin_LIBRARIES}
 )
 
+add_executable(Node
+ src/Node.cpp
+)
+target_link_libraries(Node
+  ${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
+
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
